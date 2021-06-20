@@ -1,0 +1,314 @@
+﻿@page  "/manage_vehicles"
+@layout TransportLayout
+<h3>  <span class="oi oi-flash " aria-hidden="true"></span> Manage Vehicles</h3><br/>
+
+
+<RadzenFieldset AllowCollapse="true" >
+    <HeaderTemplate>
+       <label>Task</label>
+    </HeaderTemplate>
+    <ChildContent>
+        <RadzenCard>
+            <RadzenTabs>
+                <Tabs>
+                    <RadzenTabsItem Text="Add Vehicle">
+                        <form>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Vehicle Registration No.</label> <input id="" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Name of Owner </label> <input id="" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Postal Address</label> <input id="" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Residential Address </label> <input id="" class="form-control" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+
+                                <RadzenFieldset AllowCollapse="true">
+                                    <HeaderTemplate>
+                                        <label>Make of Vehicle</label>
+                                    </HeaderTemplate>
+                                    <ChildContent>
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-6">
+                                                <label>Type</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>Color </label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>Chassis Number</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>Make/Model </label> <input id="" class="form-control" />
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Country of Origin</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>Year of Manuf. </label> <input id="" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </ChildContent>
+                                </RadzenFieldset>
+
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <RadzenFieldset AllowCollapse="true">
+                                    <HeaderTemplate>
+                                        <label>Perm. Capacity</label>
+                                    </HeaderTemplate>
+                                    <ChildContent>
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-6">
+                                                <label>Load(kg)</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>No. of Persons</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>Make of Engine</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>No.  of Clys</label> <input id="" class="form-control" />
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>CC</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>HP</label> <input id="" class="form-control" />
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Fuel</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>Use Type</label> <input id="" class="form-control" />
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                              <button class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+
+                                        
+                                    </ChildContent>
+                                </RadzenFieldset>
+                            </div>
+
+
+                          
+
+
+
+
+
+
+
+                        </form>
+                    </RadzenTabsItem>
+                    <RadzenTabsItem Text="Edit Vehicle">
+                        <form>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-10">
+                                  <input id="" class="form-control" placeholder="Enter Vehicle Number" />
+                                  
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <button class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Vehicle Registration No.</label> <input id="" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Name of Owner </label> <input id="" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Postal Address</label> <input id="" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Residential Address </label> <input id="" class="form-control" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+
+                                <RadzenFieldset AllowCollapse="true">
+                                    <HeaderTemplate>
+                                        <label>Make of Vehicle</label>
+                                    </HeaderTemplate>
+                                    <ChildContent>
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-6">
+                                                <label>Type</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>Color </label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>Chassis Number</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>Make/Model </label> <input id="" class="form-control" />
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Country of Origin</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>Year of Manuf. </label> <input id="" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </ChildContent>
+                                </RadzenFieldset>
+
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <RadzenFieldset AllowCollapse="true">
+                                    <HeaderTemplate>
+                                        <label>Perm. Capacity</label>
+                                    </HeaderTemplate>
+                                    <ChildContent>
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-6">
+                                                <label>Load(kg)</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>No. of Persons</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>Make of Engine</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>No.  of Clys</label> <input id="" class="form-control" />
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>CC</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>HP</label> <input id="" class="form-control" />
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Fuel</label> <input id="" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>Use Type</label> <input id="" class="form-control" />
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <button class="btn btn-primary">Update</button>
+                                            </div>
+                                        </div>
+
+
+                                    </ChildContent>
+                                </RadzenFieldset>
+                            </div>
+
+                        </form>
+                    </RadzenTabsItem>
+                    <RadzenTabsItem Text="Assign Driver">
+                        <form>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-10">
+                                    <input id="" class="form-control" placeholder="Enter Vehicle Number" />
+
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <button class="btn btn-primary">Search</button>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Vehicle Number</label>  <input id="" class="form-control" readonly />
+
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Driver Name</label>  <input id="" class="form-control" />
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Date</label>  <input type="date" class="form-control"/>
+
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Vehicle Status</label>
+                                    <input type="text" class="form-control"placeholder="Eg.Available or Services or In Work"/>
+                                </div>
+
+                            </div>
+                        </form>
+                 
+                    </RadzenTabsItem>
+                
+                </Tabs>
+            </RadzenTabs>
+        </RadzenCard>
+    </ChildContent>
+</RadzenFieldset>

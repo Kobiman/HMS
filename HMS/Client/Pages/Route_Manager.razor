@@ -1,0 +1,82 @@
+﻿@page "/route_manager"
+@layout TransportLayout
+@inject IJSRuntime JSRuntime
+<h3><span class="oi oi-map-marker" aria-hidden="true"></span> Route Manager | Route Information</h3>
+<hr />
+
+<form>
+    <RadzenCard>
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">All</label>
+
+
+            </div>
+
+            <div class="form-group col-md-6">
+
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Available</label>
+            </div>
+            <div class="form-group col-md-6">
+
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Service</label>
+            </div>
+            <div class="form-group col-md-6">
+
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">In Work</label>
+            </div>
+            <div class="form-group col-md-6">
+
+                <button class="btn btn-primary">Clear Filter</button>
+            </div>
+        </div>
+    </RadzenCard>
+    <br />
+    <div class="form-row">
+        <RadzenCard>
+
+            <div class="cols-md-12">
+
+                <RadzenGoogleMap style="width: 990px; height:500px" Center=@(new GoogleMapPosition() { Lat = 42.6977, Lng = 23.3219 })>
+                    <Markers>
+                        <RadzenGoogleMapMarker Title="London" Label="London" Position=@(new GoogleMapPosition() { Lat = 51.5074, Lng = 0.1278 }) />
+                        <RadzenGoogleMapMarker Title="Paris " Label="Paris" Position=@(new GoogleMapPosition() { Lat = 48.8566, Lng = 2.3522 }) />
+                        @if (showMadridMarker)
+                        {
+                            <RadzenGoogleMapMarker Title="Madrid " Label="Madrid" Position=@(new GoogleMapPosition() { Lat = 40.4168, Lng = -3.7038 }) />
+                        }
+                    </Markers>
+                </RadzenGoogleMap>
+
+                <!--<div class="col-xl-6">-->
+                @*<EventConsole @ref=@console />*@
+                <!--</div>-->
+
+
+                @code {
+                    int zoom = 3;
+                    bool showMadridMarker;
+
+
+                    //void OnMapClick(GoogleMapClickEventArgs args)
+                    //{
+                    //    console.Log($"Map clicked at Lat: {args.Position.Lat}, Lng: {args.Position.Lng}");
+                    //}
+
+                    //void OnMarkerClick(RadzenGoogleMapMarker marker)
+                    //{
+                    //    console.Log($"Map {marker.Title} marker clicked. Marker position -> Lat: {marker.Position.Lat}, Lng: {marker.Position.Lng}");
+                    //}
+                }
+
+            </div>
+
+        </RadzenCard>
+    </div>
+</form>

@@ -1,0 +1,46 @@
+﻿@page "/staff"
+@layout HRLayout
+<RadzenFieldset>
+    <HeaderTemplate>
+        <span>
+            <b style="font-size:25px">Staff</b>
+        </span>
+    </HeaderTemplate>
+    <ChildContent>
+        <div class="row form-group">
+            <RadzenButton ButtonStyle="ButtonStyle.Light" Click=@(args => navigation.NavigateTo("/staff/new"))>New</RadzenButton>
+        </div>
+        <div class="row">
+            <RadzenDataGrid Data="@staffs" Count="@count" LoadData="@LoadData" TItem="Staff" AllowVirtualization="true" Style="height:400px"
+                            AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" LogicalFilterOperator="LogicalFilterOperator.Or"
+                            AllowSorting="true">
+                <Columns>
+                    <RadzenDataGridColumn TItem="Staff" Property="Surname" Title="Surname" />
+                    <RadzenDataGridColumn TItem="Staff" Property="Othernames" Title="Othernames" />
+                    <RadzenDataGridColumn TItem="Staff" Property="DateofBirth" Title="Date Of Birth" />
+                    <RadzenDataGridColumn TItem="Staff" Property="Email" Title="Email" />
+                    <RadzenDataGridColumn TItem="Staff" Property="Phone" Title="Phone" />
+                </Columns>
+            </RadzenDataGrid>
+        </div>
+    </ChildContent>
+</RadzenFieldset>
+
+@code {
+
+    int count;
+    IEnumerable<Staff> staffs;
+
+    void LoadData(LoadDataArgs args)
+    {
+        staffs = new List<Staff>
+        {
+            new Staff{ DateofBirth = "6/8/1991", Email = "kobiman91@gmail.com", Othernames = "Kobina Oppong", Phone = "0278312378", Surname = "Lawson"},
+            new Staff{ DateofBirth = "7/8/1982", Email = "onel@gmail.com", Othernames = "Mawu", Phone = "0278545215", Surname = "Onel"},
+            new Staff{ DateofBirth = "4/11/1992", Email = "charity@gmail.com", Othernames = "Charity", Phone = "0278545215", Surname = "Boampong"},
+            new Staff{ DateofBirth = "12/7/1982", Email = "francis@gmail.com", Othernames = "Francis Asare", Phone = "0278545215", Surname = "Yawson"}
+        };
+
+        count = staffs.Count();
+    }
+}
