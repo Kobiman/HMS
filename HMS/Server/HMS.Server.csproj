@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\HMS.Client.csproj" />
     <ProjectReference Include="..\Shared\HMS.Shared.csproj" />
   </ItemGroup>
 

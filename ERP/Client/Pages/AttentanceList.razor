@@ -1,0 +1,46 @@
+﻿@page "/attendance"
+@layout HRLayout
+<RadzenFieldset>
+    <HeaderTemplate>
+        <span>
+            <b style="font-size:25px">Attendance</b>
+        </span>
+    </HeaderTemplate>
+    <ChildContent>
+        @*<div class="row form-group">
+                <RadzenButton ButtonStyle="ButtonStyle.Light" Click=@(args => navigation.NavigateTo("/staff/new"))>New</RadzenButton>
+            </div>*@
+        <div class="row">
+            <RadzenDataGrid Data="@attendance" Count="@count" LoadData="@LoadData" TItem="Attendance" AllowVirtualization="true" Style="height:400px"
+                            AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" LogicalFilterOperator="LogicalFilterOperator.Or"
+                            AllowSorting="true">
+                <Columns>
+                    <RadzenDataGridColumn TItem="Attendance" Property="Date" Title="Date" />
+                    <RadzenDataGridColumn TItem="Attendance" Property="Name" Title="Name" />
+                    <RadzenDataGridColumn TItem="Attendance" Property="Department" Title="Department" />
+                    <RadzenDataGridColumn TItem="Attendance" Property="Status" Title="Status" />
+                    <RadzenDataGridColumn TItem="Attendance" Property="Time" Title="Time" />
+                </Columns>
+            </RadzenDataGrid>
+        </div>
+    </ChildContent>
+</RadzenFieldset>
+
+@code {
+
+    int count;
+    IEnumerable<Attendance> attendance;
+
+    void LoadData(LoadDataArgs args)
+    {
+        attendance = new List<Attendance>
+        {
+            new Attendance{ Name = "Kobina Oppong Lawson", Date = "21/6/2021", Department = "IT", Status = "Signed In", Time = "8:20" },
+            new Attendance{ Name = "Priscilla Asare", Date = "21/6/2021", Department = "IT", Status = "Signed In", Time = "8:20" },
+            new Attendance{ Name = "Alexander Okah", Date = "21/6/2021", Department = "IT", Status = "Signed In", Time = "8:20" },
+            new Attendance{ Name = "Francis Asare", Date = "21/6/2021", Department = "IT", Status = "Signed In", Time = "8:20" }
+        };
+
+        count = attendance.Count();
+    }
+}
