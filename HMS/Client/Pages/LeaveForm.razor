@@ -10,25 +10,74 @@
         <RadzenCard>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label>Name</label>
+                    <label>Staff ID</label>
                     <input type="text" class="form-control">
                 </div>
                 <div class="form-group col-md-6">
-                    <label>Rank</label>
-                    <input type="text" class="form-control">
+                    <label>Name</label>
+                    <input type="text" class="form-control" readonly>
                 </div>
                 <div class="form-group col-md-6">
                     <label>Department</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Rank</label>
+                    <input type="text" class="form-control" readonly>
                 </div>
                 <div class="form-group col-md-6">
                     <label>From</label>
-                    <input type="text" class="form-control">
+                    <input type="date" class="form-control">
                 </div>
                 <div class="form-group col-md-6">
                     <label>To</label>
-                    <input type="text" class="form-control">
+                    <input type="date" class="form-control">
                 </div>
+            </div>
+            <div class="form-row">
+                <label>Previous Leave Details</label>
+                <RadzenDataGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterMode="FilterMode.Advanced"
+                                AllowPaging="true" PageSize="5" AllowSorting="true" Data="@data" TItem="IDictionary<string, object>"
+                                IsLoading="@isLoading"
+                                Count="@count" LoadData="@LoadData">
+                    <Columns>
+                        <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="EmployeeID" Title="EmployeeID" Type="typeof(int)">
+                            <Template>
+                                @context["EmployeeID"]
+                            </Template>
+                        </RadzenDataGridColumn>
+                        <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="FirstName" Title="FirstName" Type="typeof(string)">
+                            <Template>
+                                @context["FirstName"]
+                            </Template>
+                        </RadzenDataGridColumn>
+                        <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="LastName" Title="LastName" Type="typeof(string)">
+                            <Template>
+                                @context["LastName"]
+                            </Template>
+                        </RadzenDataGridColumn>
+                    </Columns>
+                </RadzenDataGrid>
+                @code {
+                    IEnumerable<IDictionary<string, object>> data;
+                    int count;
+                    bool isLoading;
+
+                    async Task LoadData(LoadDataArgs args)
+                    {
+                        isLoading = true;
+                        var uri = new Uri("https://services.radzen.com/odata/Northwind/Employees")
+                            .GetODataUri(filter: args.Filter, top: args.Top, skip: args.Skip, orderby: args.OrderBy, count: true);
+
+                        var response = await new HttpClient().SendAsync(new HttpRequestMessage(HttpMethod.Get, uri));
+
+                        var result = await response.ReadAsync<ODataServiceResult<IDictionary<string, object>>>();
+
+                        data = result.Value.AsODataEnumerable();
+                        count = result.Count;
+                        isLoading = false;
+                    }
+                }
             </div>
         </RadzenCard>
     </ChildContent>
