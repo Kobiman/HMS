@@ -1,0 +1,102 @@
+﻿@page "/payroll_deductions"
+@layout PLayout
+<h3>Add Payroll Deductions | Deduction Information</h3>
+<hr />
+<RadzenFieldset AllowCollapse="true">
+    <HeaderTemplate>
+        <label>Task</label>
+    </HeaderTemplate>
+    <ChildContent>
+        <RadzenCard>
+            <RadzenTabs>
+                <Tabs>
+
+                    <RadzenTabsItem Text="Setup Deductions">
+                        <form>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-10">
+                                    <input id="" class="form-control" placeholder="Enter Deductions" />
+
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <button class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Deductions </label> <input id="" class="form-control" />
+                                </div>
+
+
+                                <div class="form-group col-md-6">
+                                    <label>Rate(%)</label> <input id="" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-row">
+
+
+                                <div class="form-group col-md-6">
+                                    <label>Code </label> <input id="" class="form-control" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <button class="btn btn-primary">Add Deductions</button>
+                                    <button class="btn btn-primary">Update Deductions</button>
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+                        </form>
+                    </RadzenTabsItem>
+
+
+                </Tabs>
+            </RadzenTabs>
+            <br />
+            <div class="row">
+                <RadzenDataGrid Data="@EmployeeDeductions" Count="@count" LoadData="@LoadData" TItem="EmployeeDeduction" AllowVirtualization="true" Style="height:400px"
+                                AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" LogicalFilterOperator="LogicalFilterOperator.Or"
+                                AllowSorting="true">
+                    <Columns>
+                        <RadzenDataGridColumn TItem="EmployeeDeduction" Property="Id" Title="Id" />
+                        <RadzenDataGridColumn TItem="EmployeeDeduction" Property="Deductions" Title="Benefits" />
+                        <RadzenDataGridColumn TItem="EmployeeDeduction" Property="Rate" Title="Rate" />
+                        <RadzenDataGridColumn TItem="EmployeeDeduction" Property="Code" Title="Code" />
+                    </Columns>
+                </RadzenDataGrid>
+            </div>
+        </RadzenCard>
+    </ChildContent>
+</RadzenFieldset>
+
+@code {
+    int count;
+    IEnumerable<EmployeeDeduction> EmployeeDeductions;
+
+    void LoadData(LoadDataArgs args)
+    {
+        EmployeeDeductions = new List<EmployeeDeduction>
+{
+            new EmployeeDeduction{ Id = 001,    Deductions = "SSF(15%)",  Rate = 0.15, Code = "SSFD"},
+            new EmployeeDeduction{ Id = 002,    Deductions = "Welfare",  Rate = 0.10, Code = "WFD"},
+            new EmployeeDeduction{Id = 003,    Deductions = "Income Tax",  Rate = 0.15, Code = "ITD"},
+          
+        };
+
+        count = EmployeeDeductions.Count();
+    }
+} 

@@ -1,5 +1,5 @@
 ﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">HMS</a>
+    <a class="navbar-brand" href="">OERP</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,34 +7,39 @@
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
-        <li class="nav-item px-3">
+        @*<li class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="oi oi-home" aria-hidden="true"></span> Home
             </NavLink>
-        </li>
+        </li>*@
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="staff">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Staff
+            <NavLink class="nav-link" href="">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Home
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="attendance">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Attendance
+            <NavLink class="nav-link" href="Salesjournal">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Sales Journal
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="leave">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Leave
+            <NavLink class="nav-link" href="Purchasejournal">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Purchases Journal
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="benefits">
-                <span class="oi oi-person" aria-hidden="true"></span> Employee Benefits
+            <NavLink class="nav-link" href="Cashreceiptjournal">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Cash Receipt Journal
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="retirement">
-                <span class="oi oi-person" aria-hidden="true"></span> Retirement List
+            <NavLink class="nav-link" href="Cashdisbursementjournal">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Cash Disb. Journal
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Generalledger">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>General Ledger
             </NavLink>
         </li>
     </ul>

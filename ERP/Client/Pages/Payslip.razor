@@ -1,0 +1,152 @@
+﻿@page "/payslip"
+@layout PLayout
+<h3>Payslip | Payslip Information</h3>
+<hr />
+<RadzenFieldset AllowCollapse="true">
+    <HeaderTemplate>
+        <label>Task</label>
+    </HeaderTemplate>
+    <ChildContent>
+        <RadzenCard>
+            <RadzenTabs>
+                <Tabs>
+
+                    <RadzenTabsItem Text="Payslip">
+                        <form>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-10">
+                                    <input id="" class="form-control" placeholder="Enter Staff ID" />
+
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <button class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Name </label> <input id="" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Staff ID </label> <input id="" class="form-control" />
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Designation</label> <input id="" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Department </label> <input id="" class="form-control" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+                                <div class="container border">
+                                    <h3>Add Benefits</h3>
+                                    <hr />
+                                    <button @onclick="AddValue" class="btn btn-primary">Add</button>
+
+                                    @for (int i = 0; i < values.Count; i++)
+                                    {
+                                        int index = i;
+                                        <div>
+                                            <input type="text" @onchange="(e) => UpdateValue(index, e.Value.ToString())" value="@values[i]" />
+                                            <button @onclick="() => RemoveValue(index)" class="btn btn-outline-danger">Remove</button>
+                                        </div>
+                                    }
+                                    <hr />
+                                    <div>
+                                        <button @onclick="HandleSubmit" class="btn btn-success">Submit</button>
+                                    </div>
+                                    <hr />
+                                    @for (int j = 0; j < values.Count; j++)
+                                    {
+                                        <p>@values[j]</p>
+                                    }
+                                </div>
+                                @code {
+                                    private List<string> values = new List<string>();
+
+                                    private void AddValue() => values.Add("");
+                                    private void UpdateValue(int i, string value) => values[i] = value;
+                                    private void RemoveValue(int i) => values.RemoveAt(i);
+                                    private void HandleSubmit()
+                                    {
+                                        //Access and validate the values list here
+                                    }
+                                }
+                            </div>
+                            <div class="form-row">
+                                <div class="container border">
+                                    <h3>Add Deductions</h3>
+                                    <hr />
+                                    <button @onclick="AddValue1" class="btn btn-primary">Add</button>
+
+                                    @for (int i = 0; i < values1.Count; i++)
+                                    {
+                                        int index = i;
+                                        <div>
+                                            <input type="text" @onchange="(e) => UpdateValue1(index, e.Value.ToString())" value="@values[i]" />
+                                            <button @onclick="() => RemoveValue1(index)" class="btn btn-outline-danger">Remove</button>
+                                        </div>
+                                    }
+                                    <hr />
+                                    <div>
+                                        <button @onclick="HandleSubmit1" class="btn btn-success">Submit</button>
+                                    </div>
+                                    <hr />
+                                    @for (int j = 0; j < values.Count; j++)
+                                    {
+                                        <p>@values[j]</p>
+                                    }
+                                </div>
+                                @code {
+                                    private List<string> values1 = new List<string>();
+
+                                    private void AddValue1() => values.Add("");
+                                    private void UpdateValue1(int i, string value) => values[i] = value;
+                                    private void RemoveValue1(int i) => values.RemoveAt(i);
+                                    private void HandleSubmit1()
+                                    {
+                                        //Access and validate the values list here
+                                    }
+                                }
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <button class="btn btn-primary">Add Payslip</button>
+                                    <button class="btn btn-primary">Print Slips</button>
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                        </form>
+                    </RadzenTabsItem>
+
+
+                </Tabs>
+            </RadzenTabs>
+            <br />
+      
+        </RadzenCard>
+    </ChildContent>
+</RadzenFieldset>

@@ -1,0 +1,43 @@
+﻿@page "/Financialstatements"
+@layout AccountsLayout
+
+<h3><span class="oi oi-person" aria-hidden="true"></span> Export / Generate Account Receivables </h3>
+<hr />
+<form>
+    <div class="form-row">
+
+        <div class="form-group col-md-4">
+            <label>Start Date</label>
+            <input id="" class="form-control" type="date" />
+
+        </div>
+        <div class="form-group col-md-4">
+            <label>End Date</label>
+            <input id="" class="form-control" type="date" />
+
+        </div>
+        <div class="form-group col-md-4">
+            <label>Statement Type</label>
+            <select name="Statement" class="form-control">
+                <option value="Cashflow">Cashflow</option>
+                <option value="Balancesheet">Balance Sheet</option>
+                <option value="Income">Income</option>
+            </select>
+        </div>
+
+
+
+
+
+    </div>
+    <div class="form-row">
+
+        <div class="form-group col-md-6">
+            <button class="btn btn-primary">Export</button>
+            <button class="btn btn-primary">Prints</button>
+        </div>
+
+
+
+    </div>
+</form>

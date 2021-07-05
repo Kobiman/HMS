@@ -1,0 +1,134 @@
+﻿@page "/Purchasejournal"
+@layout JournalLayout
+
+<h3>Add Journal | Journal Information</h3>
+<hr />
+<RadzenFieldset AllowCollapse="true">
+    <HeaderTemplate>
+        <label>Task</label>
+    </HeaderTemplate>
+    <ChildContent>
+        <RadzenCard>
+            <RadzenTabs>
+                <Tabs>
+
+                    <RadzenTabsItem Text="Purchase Journal | Debit">
+                        <form>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Transaction Date </label> <input id="" type="date" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Transaction Type </label>
+                                    <select name="Transaction" class="form-control">
+                                        <option value="Cash">Cash</option>
+                                        <option value="Inventory">Inventory</option>
+                                        <option value="Accounts Receivable">Accounts Receivable</option>
+                                        <option value="Rent Expenses">Rent Expenses</option>
+                                        <option value="Salary Expenses">Salary Expenses</option>
+                                        <option value="Insurance Expenses">Insurance Expenses</option>
+                                        <option value="Assets">Assets</option>
+                                        <option value="Liabilities">Liabilities</option>
+                                        <option value="Owners Equity">Owners Equity</option>
+                                        <option value="Revenue">Revenue</option>
+                                        <option value="Expenses">Expenses</option>
+                                        <option value="Other Expenses">Other Expenses</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Number</label> <input id="" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Debit Amount (Ghc) </label> <input id="" class="form-control" />
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <button class="btn btn-primary">Add Entry</button>
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+                        </form>
+                    </RadzenTabsItem>
+                    <RadzenTabsItem Text="Purchase Journal | Credit">
+                        <form>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Transaction Date </label> <input id="" type="date" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Transaction Type </label>
+                                    <select name="Transaction" class="form-control">
+                                        <option value="Cash">Cash</option>
+                                        <option value="Inventory">Inventory</option>
+                                        <option value="Accounts Receivable">Accounts Receivable</option>
+                                        <option value="Rent Expenses">Rent Expenses</option>
+                                        <option value="Salary Expenses">Salary Expenses</option>
+                                        <option value="Insurance Expenses">Insurance Expenses</option>
+                                        <option value="Other Expenses">Other Expenses</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Number</label> <input id="" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Credit Amount (Ghc) </label> <input id="" class="form-control" />
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <button class="btn btn-primary">Add Entry</button>
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+                        </form>
+                    </RadzenTabsItem>
+
+                </Tabs>
+            </RadzenTabs>
+        </RadzenCard>
+    </ChildContent>
+</RadzenFieldset>

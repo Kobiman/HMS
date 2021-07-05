@@ -1,5 +1,5 @@
 ﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">HMS</a>
+    <a class="navbar-brand" href="">OERP</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,36 +7,37 @@
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
-        <li class="nav-item px-3">
+        @*<li class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="oi oi-home" aria-hidden="true"></span> Home
             </NavLink>
-        </li>
+        </li>*@
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="staff">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Staff
+            <NavLink class="nav-link" href="">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Home
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="attendance">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Attendance
+            <NavLink class="nav-link" href="payroll_benefits">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Benefits
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="leave">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Leave
+            <NavLink class="nav-link" href="payroll_deductions">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Deductions
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="benefits">
-                <span class="oi oi-person" aria-hidden="true"></span> Employee Benefits
+            <NavLink class="nav-link" href="payslip">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Payslip
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="retirement">
-                <span class="oi oi-person" aria-hidden="true"></span> Retirement List
+            <NavLink class="nav-link" href="export_printslip">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Print Slip
             </NavLink>
         </li>
+
     </ul>
 </div>
 

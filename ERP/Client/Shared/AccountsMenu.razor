@@ -1,0 +1,73 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">OERP</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        @*<li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>*@
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="journal">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Ledger(01)
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="COA">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>COA(02)
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Trialbalance">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Trial Balance(03)
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Balancesheet">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Balance Sheet(04)
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Banking">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Banking(05A)
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Accountreceivable">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Account Receivable(05)
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Accountpayable">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Account Payable(06)
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Financialstatements">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Financial Statement(07)
+            </NavLink>
+        </li>
+
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

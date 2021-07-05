@@ -1,0 +1,110 @@
+﻿@page "/payroll_benefits"
+@layout PLayout
+<h3>Add Payroll Benefits | Benefits Information</h3>
+<hr />
+<RadzenFieldset AllowCollapse="true">
+    <HeaderTemplate>
+        <label>Task</label>
+    </HeaderTemplate>
+    <ChildContent>
+        <RadzenCard>
+            <RadzenTabs>
+                <Tabs>
+
+                    <RadzenTabsItem Text="Setup Benefits">
+                        <form>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-10">
+                                    <input id="" class="form-control" placeholder="Enter Benefits" />
+
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <button class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Benefits </label> <input id="" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Category </label>
+                                    <select name="EmployeeCategory" class="form-control">
+                                        <option value="JuniorStaff">Junior Staff</option>
+                                        <option value="SeniorStaff">Senior Staff</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Rate(%)</label> <input id="" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Code </label> <input id="" class="form-control" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <button class="btn btn-primary">Add Benefits</button>
+                                    <button class="btn btn-primary">Update Benefits</button>
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+                        </form>
+                    </RadzenTabsItem>
+
+
+                </Tabs>
+            </RadzenTabs>
+            <br />
+            <div class="row">
+                <RadzenDataGrid Data="@EmployeeBenefits" Count="@count" LoadData="@LoadData" TItem="EmployeeBenefit" AllowVirtualization="true" Style="height:400px"
+                                AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" LogicalFilterOperator="LogicalFilterOperator.Or"
+                                AllowSorting="true">
+                    <Columns>
+                        <RadzenDataGridColumn TItem="EmployeeBenefit" Property="Id" Title="Id" />
+                        <RadzenDataGridColumn TItem="EmployeeBenefit" Property="Benefits" Title="Benefits" />
+                        <RadzenDataGridColumn TItem="EmployeeBenefit" Property="Category" Title="Category" />
+                        <RadzenDataGridColumn TItem="EmployeeBenefit" Property="Rate" Title="Rate" />
+                        <RadzenDataGridColumn TItem="EmployeeBenefit" Property="Code" Title="Email" />
+                    </Columns>
+                </RadzenDataGrid>
+            </div>
+        </RadzenCard>
+    </ChildContent>
+</RadzenFieldset>
+
+@code {
+    int count;
+    IEnumerable<EmployeeBenefit> EmployeeBenefits;
+
+    void LoadData(LoadDataArgs args)
+    {
+        EmployeeBenefits = new List<EmployeeBenefit>
+    {
+            new EmployeeBenefit{ Id = 001,    Benefits = "Overtime Allowance", Category = "Junior Staff", Rate = 0.15, Code = "JOA"},
+            new EmployeeBenefit{ Id = 002,    Benefits = "Car Maintenenace Allowance", Category = "Junior Staff", Rate = 0.10, Code = "JCMA"},
+            new EmployeeBenefit{Id = 003,    Benefits = "Rent Allowance", Category = "Junior Staff", Rate = 0.15, Code = "JRA"},
+            new EmployeeBenefit{ Id = 004,    Benefits = "Health Care", Category = "Junior Staff", Rate = 0.15, Code = "JHC"}
+        };
+
+        count = EmployeeBenefits.Count();
+    }
+} 

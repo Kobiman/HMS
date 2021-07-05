@@ -1,0 +1,48 @@
+﻿@page "/retirement"
+@layout HRLayout
+
+<h3><span class="oi oi-person" aria-hidden="true"></span> Employee Retirement | Retirement Update List</h3>
+<hr />
+<br />
+<RadzenDataGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterMode="FilterMode.Advanced"
+                AllowPaging="true" PageSize="5" AllowSorting="true" Data="@data" TItem="IDictionary<string, object>"
+                IsLoading="@isLoading"
+                Count="@count" LoadData="@LoadData">
+    <Columns>
+        <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="EmployeeID" Title="EmployeeID" Type="typeof(int)">
+            <Template>
+                @context["EmployeeID"]
+            </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="FirstName" Title="FirstName" Type="typeof(string)">
+            <Template>
+                @context["FirstName"]
+            </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="LastName" Title="LastName" Type="typeof(string)">
+            <Template>
+                @context["LastName"]
+            </Template>
+        </RadzenDataGridColumn>
+    </Columns>
+</RadzenDataGrid>
+@code {
+    IEnumerable<IDictionary<string, object>> data;
+    int count;
+    bool isLoading;
+
+    async Task LoadData(LoadDataArgs args)
+    {
+        isLoading = true;
+        var uri = new Uri("https://services.radzen.com/odata/Northwind/Employees")
+            .GetODataUri(filter: args.Filter, top: args.Top, skip: args.Skip, orderby: args.OrderBy, count: true);
+
+        var response = await new HttpClient().SendAsync(new HttpRequestMessage(HttpMethod.Get, uri));
+
+        var result = await response.ReadAsync<ODataServiceResult<IDictionary<string, object>>>();
+
+        data = result.Value.AsODataEnumerable();
+        count = result.Count;
+        isLoading = false;
+    }
+}

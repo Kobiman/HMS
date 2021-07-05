@@ -1,8 +1,7 @@
-﻿@page "/parts_inventory"
-@layout TransportLayout
-<h3> <span class="oi oi-compass " aria-hidden="true"></span> Parts Inventory | Inventory Information</h3>
+﻿@page "/managestores"
+@layout StoreLayout
+<h3><span class="oi oi-map-marker" aria-hidden="true"></span> Stores Manager | Stores Information</h3>
 <hr />
-
 <RadzenFieldset AllowCollapse="true">
     <HeaderTemplate>
         <label>Task</label>
@@ -12,12 +11,12 @@
             <RadzenTabs>
                 <Tabs>
 
-                    <RadzenTabsItem Text="Add Parts">
+                    <RadzenTabsItem Text="Add Item">
                         <form>
                             <div class="form-row">
 
                                 <div class="form-group col-md-10">
-                                    <input id="" class="form-control" placeholder="Enter Parts No." />
+                                    <input id="" class="form-control" placeholder="Enter Item Name" />
 
                                 </div>
 
@@ -29,7 +28,7 @@
                             <div class="form-row">
 
                                 <div class="form-group col-md-6">
-                                    <label>Parts Number </label> <input id="" class="form-control" />
+                                    <label>Item Name </label> <input id="" class="form-control" />
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -39,7 +38,7 @@
                             <div class="form-row">
 
                                 <div class="form-group col-md-6">
-                                    <label>Unit Price</label> <input id="" class="form-control" />
+                                    <label>Cost Price</label> <input id="" class="form-control" />
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -54,15 +53,26 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label>Date </label> <input type="date" id="" class="form-control" />
+                                    <label>Received by </label> <input  id="" class="form-control" />
                                 </div>
 
                             </div>
                             <div class="form-row">
 
+                            <div class="form-group col-md-6">
+                                <label>Description</label> <input id="" class="form-control" />
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>Date </label> <input type="date" id="" class="form-control" />
+                            </div>
+                             </div>
+                   
+                            <div class="form-row">
+
                                 <div class="form-group col-md-6">
-                                    <button class="btn btn-primary">Add Parts</button>
-                                    <button class="btn btn-primary">Update Parts</button>
+                                    <button class="btn btn-primary">Add Item</button>
+                                    <button class="btn btn-primary">Update Item</button>
                                 </div>
 
 
@@ -75,12 +85,12 @@
 
                         </form>
                     </RadzenTabsItem>
-                    <RadzenTabsItem Text="Issue Parts">
+                    <RadzenTabsItem Text="Issue Item">
                         <form>
                             <div class="form-row">
 
                                 <div class="form-group col-md-10">
-                                    <input id="" class="form-control" placeholder="Enter Parts No." />
+                                    <input id="" class="form-control" placeholder="Enter Item Name" />
 
                                 </div>
 
@@ -92,7 +102,7 @@
                             <div class="form-row">
 
                                 <div class="form-group col-md-6">
-                                    <label>Parts Number </label> <input id="" class="form-control" />
+                                    <label>Item Name </label> <input id="" class="form-control" />
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -102,30 +112,41 @@
                             <div class="form-row">
 
                                 <div class="form-group col-md-6">
-                                    <label>User Department</label> <input id="" class="form-control" />
+                                    <label>Cost Price</label> <input id="" class="form-control" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label>Name of Receiver </label> <input id="" class="form-control" />
+                                    <label>Supplier Name </label> <input id="" class="form-control" />
                                 </div>
 
                             </div>
                             <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label>Invoice Number </label> <input id="" class="form-control" />
+                                </div>
 
                                 <div class="form-group col-md-6">
                                     <label>Issued by </label> <input id="" class="form-control" />
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                    <label>Date </label> <input type="date" id="" class="form-control" />
-                                </div>
-
                             </div>
                             <div class="form-row">
 
                                 <div class="form-group col-md-6">
-                                    <button class="btn btn-primary">Issue Parts</button>
-                                    <button class="btn btn-primary">Clear</button>
+                                    <label>Description</label> <input id="" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Issue Date </label> <input type="date" id="" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <button class="btn btn-primary">Issue Item</button>
+                               
                                 </div>
 
 
@@ -137,6 +158,12 @@
 
 
                         </form>
+
+
+
+
+
+
                     </RadzenTabsItem>
 
                 </Tabs>
