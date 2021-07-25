@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ERP.Shared.Models
+namespace ERP.Models.HMS
 {
     public class Attendance
     {

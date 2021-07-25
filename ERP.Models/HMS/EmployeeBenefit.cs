@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ERP.Shared.Models
+namespace ERP.Models.HMS
 {
-   public class EmployeeBenefit
+    public class EmployeeBenefit
     {
         public int Id { get; set; }
-        public String Benefits { get; set; }
-        public String Category { get; set; }
+        public string Benefits { get; set; }
+        public string Category { get; set; }
         public double Rate { get; set; }
-        public String  Code { get; set; }
+        public string Code { get; set; }
     }
 }

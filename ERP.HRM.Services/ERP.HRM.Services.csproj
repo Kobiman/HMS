@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.HRM.Data.Contracts\ERP.HRM.Data.Contracts.csproj" />
+    <ProjectReference Include="..\ERP.HRM.Services.Contracts\ERP.HRM.Services.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
