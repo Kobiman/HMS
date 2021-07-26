@@ -20,6 +20,11 @@
                     <RadzenDataGridColumn TItem="Staff" Property="DateofBirth" Title="Date Of Birth" />
                     <RadzenDataGridColumn TItem="Staff" Property="Email" Title="Email" />
                     <RadzenDataGridColumn TItem="Staff" Property="Phone" Title="Phone" />
+                    <RadzenGridColumn TItem="Staff" Property="StaffId" Title="" Width="5">
+                        <Template Context="data">
+                            <RadzenButton ButtonStyle="ButtonStyle.Light" Click=@(args => navigation.NavigateTo($"/staff/new/{data.StaffId}"))>Edit</RadzenButton>
+                        </Template>
+                    </RadzenGridColumn>
                 </Columns>
             </RadzenDataGrid>
         </div>
@@ -31,16 +36,11 @@
     int count;
     IEnumerable<Staff> staffs;
 
-    void LoadData(LoadDataArgs args)
+    async Task LoadData(LoadDataArgs args)
     {
-        staffs = new List<Staff>
-        {
-            new Staff{ DateofBirth = DateTime.Now, Email = "kobiman91@gmail.com", Othernames = "Kobina Oppong", Phone = "0278312378", Surname = "Lawson"},
-            new Staff{ DateofBirth = DateTime.Now, Email = "onel@gmail.com", Othernames = "Mawu", Phone = "0278545215", Surname = "Onel"},
-            new Staff{ DateofBirth = DateTime.Now, Email = "charity@gmail.com", Othernames = "Charity", Phone = "0278545215", Surname = "Boampong"},
-            new Staff{ DateofBirth = DateTime.Now, Email = "francis@gmail.com", Othernames = "Francis Asare", Phone = "0278545215", Surname = "Yawson"}
-        };
+        var result = await Http.GetFromJsonAsync<Result<Staff[]>>($"{Constants.HMSUrl}/api/Staff/GetStaffs");
+        staffs = result.Value;
 
-        count = staffs.Count();
+      count = staffs.Count();
     }
 }

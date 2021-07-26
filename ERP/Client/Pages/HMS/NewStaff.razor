@@ -234,17 +234,16 @@
     private string administrative = string.Empty;
     private string spous = string.Empty;
     private string dependant = string.Empty;
-    private EditContext editContext;
     Staff staff = new Staff();
 
     async Task OnSubmit(Staff staff, int id)
     {
         if (id == 0)
         {
-            var uri = "https://localhost:44372/api/Staff/AddStaff";
+            var uri = $"{Constants.HMSUrl}/api/Staff/AddStaff";
             if (!string.IsNullOrWhiteSpace(Id))
             {
-                uri = "https://localhost:44372/api/Student/UpdateStudent";
+                uri = $"{Constants.HMSUrl}/api/Student/UpdateStudent";
             }
 
             var response = await Http.PostAsJsonAsync(uri, staff);
@@ -309,8 +308,12 @@
         //}
     }
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        editContext = new(staff);
+        if (!string.IsNullOrWhiteSpace(Id))
+        {
+            var result = await Http.GetFromJsonAsync<Result<Staff>>($"api/Staff/GetStaff/{Id}");
+            staff = result.Value;
+        }
     }
 }

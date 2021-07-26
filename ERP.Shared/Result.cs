@@ -10,9 +10,9 @@ namespace ERP.Shared
 
     public class Result<T> : IResult
     {
-        public bool IsSucessful { get; set; }
-        public T Value { get; set; }
-        public string Message { get; set; }
+        public bool IsSucessful { get; private set; }
+        public T Value { get; private set; }
+        public string Message { get; private set; }
 
         public Result(bool isSuccessful, T value, string message)
         {
@@ -24,8 +24,8 @@ namespace ERP.Shared
 
     public class Result : IResult
     {
-        public bool IsSucessful { get; set; }
-        public string Message { get; set; }
+        public bool IsSucessful { get; private set; }
+        public string Message { get; private set; }
 
         public Result(bool isSuccessful, string message)
         {
