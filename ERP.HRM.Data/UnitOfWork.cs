@@ -13,8 +13,12 @@ namespace ERP.HRM.Data
     {
         private IStaffRepository _staffs;
         public IStaffRepository Staffs => _staffs ??= new StaffRepository(_context);
+        private IDependantRepository _dependants;
+        public IDependantRepository Dependants => _dependants ??= new DependantRepository(_context);
 
         private HMSDataContext _context { get; set; }
+
+        
 
         public UnitOfWork(HMSDataContext context)
         {

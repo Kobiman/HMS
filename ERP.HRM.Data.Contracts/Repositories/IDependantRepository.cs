@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace ERP.HRM.Data.Contracts.Repositories
 {
-    public interface IStaffRepository : IRepository<Staff>
+    public interface IDependantRepository : IRepository<Dependant>
     {
-        Task<Staff> GetStaffAsync(string staffId);
     }
 }

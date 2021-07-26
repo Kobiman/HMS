@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ERP.HRM.Data.Migrations
 {
-    public partial class init : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -38,7 +38,7 @@ namespace ERP.HRM.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Dependant",
+                name: "Dependants",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -49,9 +49,9 @@ namespace ERP.HRM.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Dependant", x => x.Id);
+                    table.PrimaryKey("PK_Dependants", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Dependant_Staffs_StaffId",
+                        name: "FK_Dependants_Staffs_StaffId",
                         column: x => x.StaffId,
                         principalTable: "Staffs",
                         principalColumn: "StaffId",
@@ -59,15 +59,15 @@ namespace ERP.HRM.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Dependant_StaffId",
-                table: "Dependant",
+                name: "IX_Dependants_StaffId",
+                table: "Dependants",
                 column: "StaffId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Dependant");
+                name: "Dependants");
 
             migrationBuilder.DropTable(
                 name: "Staffs");

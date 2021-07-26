@@ -34,7 +34,7 @@ namespace ERP.Models.HMS
         public string SpouseAddress { get; set; }
         public string SpousPhone { get; set; }
 
-        public IList<Dependant> Dependants { get; set; } = new List<Dependant> { new Dependant() };
+        public IList<Dependant> Dependants { get; set; } = new List<Dependant>();
 
         public void AddDependant()
         {

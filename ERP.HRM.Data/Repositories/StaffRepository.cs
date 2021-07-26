@@ -14,5 +14,10 @@ namespace ERP.HRM.Data.Repositories
         public StaffRepository(DbContext context) : base(context)
         {
         }
+
+        public Task<Staff> GetStaffAsync(string staffId)
+        {
+            return DbSet.Include(x => x.Dependants.Where(x => x.StaffId == staffId)).FirstOrDefaultAsync(x => x.StaffId == staffId);;
+        }
     }
 }

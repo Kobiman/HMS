@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ERP.HRM.Data.Migrations
 {
     [DbContext(typeof(HMSDataContext))]
-    [Migration("20210726022409_init")]
-    partial class init
+    [Migration("20210726060557_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,7 +42,7 @@ namespace ERP.HRM.Data.Migrations
 
                     b.HasIndex("StaffId");
 
-                    b.ToTable("Dependant");
+                    b.ToTable("Dependants");
                 });
 
             modelBuilder.Entity("ERP.Models.HMS.Staff", b =>

@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.JSInterop
+@inject NavigationManager MyNavigationManager
+@inject IJSRuntime JS
+<img src="@staff.Photo" width="200" height="200" />
+<div class="row" style="margin-left: 0px;">
+<InputFile OnChange="@OpenFileAsync" style="margin-top: 10px;" />
+</div>
+
+    @code {
+
+
+        [Parameter]
+        public Staff staff { get; set; }
+
+        async Task OpenFileAsync(InputFileChangeEventArgs e)
+        {
+            var format = "image/jpg";
+            var resizedImageFile = await e.File.RequestImageFileAsync(format,
+                350, 350);
+            var buffer = new byte[resizedImageFile.Size];
+            await resizedImageFile.OpenReadStream().ReadAsync(buffer);
+            staff.Photo =
+            $"data:{format};base64,{Convert.ToBase64String(buffer)}";
+            //await SetFilePath();
+        }
+
+        //public async Task SetFilePath()
+        //{
+        //    await JS.InvokeVoidAsync("setFilePath", ImagePath);
+        //}
+    }

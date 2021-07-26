@@ -40,7 +40,7 @@ namespace ERP.HRM.Data.Migrations
 
                     b.HasIndex("StaffId");
 
-                    b.ToTable("Dependant");
+                    b.ToTable("Dependants");
                 });
 
             modelBuilder.Entity("ERP.Models.HMS.Staff", b =>

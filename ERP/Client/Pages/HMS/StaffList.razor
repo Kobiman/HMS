@@ -20,11 +20,11 @@
                     <RadzenDataGridColumn TItem="Staff" Property="DateofBirth" Title="Date Of Birth" />
                     <RadzenDataGridColumn TItem="Staff" Property="Email" Title="Email" />
                     <RadzenDataGridColumn TItem="Staff" Property="Phone" Title="Phone" />
-                    <RadzenGridColumn TItem="Staff" Property="StaffId" Title="" Width="5">
+                    <RadzenDataGridColumn TItem="Staff" Property="StaffId" Title="" Width="5">
                         <Template Context="data">
                             <RadzenButton ButtonStyle="ButtonStyle.Light" Click=@(args => navigation.NavigateTo($"/staff/new/{data.StaffId}"))>Edit</RadzenButton>
                         </Template>
-                    </RadzenGridColumn>
+                    </RadzenDataGridColumn>
                 </Columns>
             </RadzenDataGrid>
         </div>

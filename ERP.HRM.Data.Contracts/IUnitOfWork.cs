@@ -10,6 +10,7 @@ namespace ERP.HRM.Data.Contracts
     public interface IUnitOfWork : IDisposable
     {
         IStaffRepository Staffs { get; }
+        IDependantRepository Dependants { get; }
 
         int SaveChanges();
         Task<int> SaveChangesAsync();

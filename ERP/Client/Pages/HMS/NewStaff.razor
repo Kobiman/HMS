@@ -88,10 +88,9 @@
                             </div>
                         </div>
                         <div class="form-row">
-
                             <div class="form-group col-md-6">
                                 <h3 style="margin-top: 1rem">Upload Photo</h3>
-                                <RadzenUpload Multiple="true" Accept="image/*" Url="upload/multiple" Style="margin-bottom: 20px;" />
+                                <FileUploadComponent staff=@staff />
                             </div>
                         </div>
                         <div class="rz-steps-buttons">
@@ -243,7 +242,7 @@
             var uri = $"{Constants.HMSUrl}/api/Staff/AddStaff";
             if (!string.IsNullOrWhiteSpace(Id))
             {
-                uri = $"{Constants.HMSUrl}/api/Student/UpdateStudent";
+                uri = $"{Constants.HMSUrl}/api/Staff/UpdateStaff";
             }
 
             var response = await Http.PostAsJsonAsync(uri, staff);
@@ -312,8 +311,12 @@
     {
         if (!string.IsNullOrWhiteSpace(Id))
         {
-            var result = await Http.GetFromJsonAsync<Result<Staff>>($"api/Staff/GetStaff/{Id}");
+            var result = await Http.GetFromJsonAsync<Result<Staff>>($"{Constants.HMSUrl}/api/Staff/GetStaff/{Id}");
             staff = result.Value;
+        }
+        else
+        {
+            staff.AddDependant();
         }
     }
 }
