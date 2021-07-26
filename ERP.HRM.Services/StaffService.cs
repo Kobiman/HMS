@@ -17,10 +17,10 @@ namespace ERP.HRM.Services
         }
         public async Task<IResult> AddStaff(Staff staff)
         {
-            if(staff is null) return new Result(false, MessageSource.OperationFailed);
-            _unitOfWork.Staffs.Add(staff);
-            await _unitOfWork.SaveChangesAsync();
-            return new Result(true, MessageSource.AddedSuccessfully(nameof(Staff)));
+           if (staff is null) return new Result(false, MessageSource.OperationFailed);
+           _unitOfWork.Staffs.Add(staff);
+           await _unitOfWork.SaveChangesAsync();
+           return new Result(true, MessageSource.AddedSuccessfully(nameof(Staff)));
         }
 
         public async ValueTask<IResult> GetStaff(string staffId)

@@ -24,8 +24,8 @@ namespace ERP.Shared
 
     public class Result : IResult
     {
-        public bool IsSucessful { get; private set; }
-        public string Message { get; private set; }
+        public bool IsSucessful { get; set; }
+        public string Message { get; set; }
 
         public Result(bool isSuccessful, string message)
         {

@@ -1,5 +1,6 @@
 ﻿using ERP.HRM.Data.Contracts;
 using ERP.HRM.Data.Contracts.Repositories;
+using ERP.HRM.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,8 @@ namespace ERP.HRM.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public IStaffRepository Staffs => throw new NotImplementedException();
+        private IStaffRepository _staffs;
+        public IStaffRepository Staffs => _staffs ??= new StaffRepository(_context);
 
         private HMSDataContext _context { get; set; }
 
@@ -20,12 +22,12 @@ namespace ERP.HRM.Data
         }
         public int SaveChanges()
         {
-            throw new NotImplementedException();
+          return  _context.SaveChanges();
         }
 
         public Task<int> SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            return _context.SaveChangesAsync();
         }
 
         public void Dispose()

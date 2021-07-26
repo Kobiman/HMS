@@ -8,11 +8,12 @@ namespace ERP.Models.HMS
 {
     public class Staff
     {
+        public string StaffId { get; set; } = Guid.NewGuid().ToString();
         //Personal
         public string Photo { get; set; }
         public string Surname { get; set; }
         public string Othernames { get; set; }
-        public string DateofBirth { get; set; }
+        public DateTime DateofBirth { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Hometown { get; set; }
@@ -30,9 +31,19 @@ namespace ERP.Models.HMS
 
         //Spous
         public string NameofSpouse { get; set; }
-        public string Address { get; set; }
+        public string SpouseAddress { get; set; }
         public string SpousPhone { get; set; }
 
-        public IList<Dependant> Dependants { get; set; }
+        public IList<Dependant> Dependants { get; set; } = new List<Dependant> { new Dependant() };
+
+        public void AddDependant()
+        {
+            Dependants.Add(new Dependant());
+        }
+
+        public void RemoveDependant(Dependant d)
+        {
+            Dependants.Remove(d);
+        }
     }
 }

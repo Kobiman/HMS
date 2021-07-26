@@ -1,4 +1,4 @@
-﻿@page "/staff/new"
+﻿@page "/staff/new/{id?}"
 @layout HRLayout
 <RadzenFieldset>
     <HeaderTemplate>
@@ -7,163 +7,310 @@
         </span>
     </HeaderTemplate>
     <ChildContent>
-        <RadzenSteps>
-            <Steps>
-                <RadzenStepsItem Text="Personal">
-                    <RadzenCard>
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Surname</label>
-                                    <input type="email" class="form-control">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Othername(s)</label>
-                                    <input type="password" class="form-control">
-                                </div>
+        <div class="rz-steps">
+            <ul role="tablist">
+                <li class="rz-steps-item rz-state-highlight @personal">
+                    <a href="javascript:void(0)" class="rz-menuitem-link">
+                        <span class="rz-steps-number">1</span>
+                        <span class="rz-steps-title">Personal</span>
+                    </a>
+                </li>
+                <li class="rz-steps-item @administrative">
+                    <a href="javascript:void(0)" class="rz-menuitem-link">
+                        <span class="rz-steps-number">2</span>
+                        <span class="rz-steps-title">Adminstrative</span>
+                    </a>
+                </li>
+                <li class="rz-steps-item @spous">
+                    <a href="javascript:void(0)" class="rz-menuitem-link">
+                        <span class="rz-steps-number">3</span>
+                        <span class="rz-steps-title">Spous</span>
+                    </a>
+                </li>
+                <li class="rz-steps-item @dependant">
+                    <a href="javascript:void(0)" class="rz-menuitem-link">
+                        <span class="rz-steps-number">4</span>
+                        <span class="rz-steps-title">Dependants</span>
+                    </a>
+                </li>
+            </ul>
+            @if (IsShow == 1)
+            {
+                <RadzenTemplateForm Data="@staff" Submit="@(async(Staff args) => {await OnSubmit(args,2); })">
+                    <div class="rz-widget-content">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Surname</label>
+                                <RadzenTextBox Name="Surname" @bind-Value='staff.Surname' class="form-control" />
+                                <RadzenRequiredValidator Component="Surname" Text="Surname is required" />
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Date of Birth</label>
-                                    <input type="password" class="form-control">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Phone</label>
-                                    <input type="password" class="form-control">
-                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Othername(s)</label>
+                                <RadzenTextBox Name="Othernames" @bind-Value='staff.Othernames' class="form-control" />
+                                <RadzenRequiredValidator Component="Othernames" Text="Othernames is required" />
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Hometown</label>
-                                    <input type="password" class="form-control">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Place of birth</label>
-                                    <input type="password" class="form-control">
-                                </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Date of Birth</label>
+                                <RadzenDatePicker Name="DateofBirth" @bind-Value='staff.DateofBirth' Style="width:100%" />
+                                <RadzenRequiredValidator Component="DateofBirth" Text="DateofBirth is required" />
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Residential Address</label>
-                                    <input type="email" class="form-control">
-                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Phone</label>
+                                <RadzenTextBox Name="Phone" @bind-Value='staff.Phone' class="form-control" />
+                                <RadzenRequiredValidator Component="Phone" Text="Phone is required" />
                             </div>
-                            <div class="form-row">
-                               
-                                <div class="form-group col-md-6">
-                                    <h3 style="margin-top: 1rem">Upload Photo</h3>
-                                    <RadzenUpload Multiple="true" Accept="image/*" Url="upload/multiple" Style="margin-bottom: 20px;"
-                                                  />
-                                </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Hometown</label>
+                                <RadzenTextBox Name="Hometown" @bind-Value='staff.Hometown' class="form-control" />
+                                <RadzenRequiredValidator Component="Hometown" Text="Hometown is required" />
                             </div>
-                        </form>
-                    </RadzenCard>
-                </RadzenStepsItem>
-                <RadzenStepsItem Text="Adminstrative">
-                    <RadzenCard>
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Department</label>
-                                    <input type="email" class="form-control">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Designation</label>
-                                    <input type="email" class="form-control">
-                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Place of birth</label>
+                                <RadzenTextBox Name="PlaceofBirth" @bind-Value='staff.PlaceofBirth' class="form-control" />
+                                <RadzenRequiredValidator Component="PlaceofBirth" Text="Place of birth is required" />
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label>Account number</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label>Tin number</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label>Social security number</label>
-                                    <input type="text" class="form-control">
-                                </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Email</label>
+                                <RadzenTextBox Name="Email" @bind-Value='staff.Email' class="form-control" />
+                                <RadzenRequiredValidator Component="Email" Text="Email is required" />
+                                <RadzenEmailValidator Component="Email" Text="Invalid email" />
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Appointment Date</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Retirement Date</label>
-                                    <input type="text" class="form-control">
-                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Residential Address</label>
+                                <RadzenTextBox Name="ResidentialAddress" @bind-Value='staff.ResidentialAddress' class="form-control" />
+                                <RadzenRequiredValidator Component="ResidentialAddress" Text="Residential address is required" />
                             </div>
-                        </form>
-                    </RadzenCard>
-                </RadzenStepsItem>
-                <RadzenStepsItem Text="Spous">
-                    <RadzenCard>
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Name of spouse</label>
-                                    <input type="text" class="form-control">
-                                </div>
+                        </div>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+                                <h3 style="margin-top: 1rem">Upload Photo</h3>
+                                <RadzenUpload Multiple="true" Accept="image/*" Url="upload/multiple" Style="margin-bottom: 20px;" />
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Address</label>
-                                    <input type="text" class="form-control">
-                                </div>
+                        </div>
+                        <div class="rz-steps-buttons">
+                            <RadzenButton class="rz-steps-prev rz-state-disabled btn-light" ButtonType="ButtonType.Submit" style="background-color: white;">Previous</RadzenButton>
+                            <RadzenButton class="rz-steps-next btn-light" ButtonType="ButtonType.Submit" style="background-color: white;">Next</RadzenButton>
+                        </div>
+                    </div>
+                </RadzenTemplateForm>
+            }
+            @if (IsShow == 2)
+            {
+                <RadzenTemplateForm Data="@staff" Submit="@(async(Staff args) => {await OnSubmit(args, 3); })">
+                    <div class="rz-widget-content">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Department</label>
+                                <RadzenTextBox Name="Department" @bind-Value='staff.Department' class="form-control" />
+                                <RadzenRequiredValidator Component="Department" Text="Department is required" />
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Phone</label>
-                                    <input type="text" class="form-control">
-                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Designation</label>
+                                <RadzenTextBox Name="Designation" @bind-Value='staff.Designation' class="form-control" />
+                                <RadzenRequiredValidator Component="Designation" Text="Designation is required" />
                             </div>
-                        </form>
-                    </RadzenCard>
-                </RadzenStepsItem>
-                <RadzenStepsItem Text="Dependants">
-                    <RadzenCard>
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Name of Dependant</label>
-                                    <input type="text" class="form-control">
-                                </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>Account number</label>
+                                <RadzenTextBox Name="AccountNumber" @bind-Value='staff.AccountNumber' class="form-control" />
+                                <RadzenRequiredValidator Component="AccountNumber" Text="Account number is required" />
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Address</label>
-                                    <input type="text" class="form-control">
-                                </div>
+                            <div class="form-group col-md-4">
+                                <label>Tin number</label>
+                                <RadzenTextBox Name="TinNumber" @bind-Value='staff.TinNumber' class="form-control" />
+                                <RadzenRequiredValidator Component="TinNumber" Text="Tin number is required" />
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Phone</label>
-                                    <input type="text" class="form-control">
-                                </div>
+                            <div class="form-group col-md-4">
+                                <label>Social security number</label>
+                                <RadzenTextBox Name="SocialSecurityNumber" @bind-Value='staff.SocialSecurityNumber' class="form-control" />
+                                <RadzenRequiredValidator Component="SocialSecurityNumber" Text="Social security number is required" />
                             </div>
-                            <button type="submit" class="btn btn-primary">Add Dependant</button>
-                        </form>
-                    </RadzenCard>
-                </RadzenStepsItem>
-            </Steps>
-        </RadzenSteps>
-        @*<div class="row">
-               <div class="form-group row">
-                       <RadzenButton ButtonStyle="ButtonStyle.Success">Save</RadzenButton>
-                       <RadzenButton ButtonStyle="ButtonStyle.Light" Click=@(args => navigation.NavigateTo("/staff/list"))>Cancel</RadzenButton>
-               </div>
-            </div>*@
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Appointment Date</label>
+                                <RadzenDatePicker Name="AppointmentDate" @bind-Value='staff.AppointmentDate' Style="width:100%" />
+                                <RadzenRequiredValidator Component="AppointmentDate" Text="Appointment date is required" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Retirement Date</label>
+                                <RadzenDatePicker Name="RetirementDate" @bind-Value='staff.RetirementDate' Style="width:100%" />
+                                <RadzenRequiredValidator Component="RetirementDate" Text="Retirement date is required" />
+                            </div>
+                        </div>
+                        <div class="rz-steps-buttons">
+                            <RadzenButton class="rz-steps-prev btn-light" ButtonType="ButtonType.Submit" Click="@(()=>OnChange(1))" style="background-color: white;">Previous</RadzenButton>
+                            <RadzenButton class="rz-steps-next btn-light" ButtonType="ButtonType.Submit" style="background-color: white;">Next</RadzenButton>
+                        </div>
+                    </div>
+                </RadzenTemplateForm>
+            }
+            @if (IsShow == 3)
+            {
+                <RadzenTemplateForm Data="@staff" Submit="@(async(Staff args) => {await OnSubmit(args,4); })">
+                    <div class="rz-widget-content">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Name of spouse</label>
+                                <RadzenTextBox Name="NameofSpouse" @bind-Value='staff.NameofSpouse' class="form-control" />
+                                <RadzenRequiredValidator Component="NameofSpouse" Text="Name of spouse is required" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Address</label>
+                                <RadzenTextBox Name="SpouseAddress" @bind-Value='staff.SpouseAddress' class="form-control" />
+                                <RadzenRequiredValidator Component="SpouseAddress" Text="Address is required" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Phone</label>
+                                <RadzenTextBox Name="SpousPhone" @bind-Value='staff.SpousPhone' class="form-control" />
+                                <RadzenRequiredValidator Component="SpousPhone" Text="Phone is required" />
+                            </div>
+                        </div>
+                        <div class="rz-steps-buttons">
+                            <RadzenButton class="rz-steps-prev btn-light" ButtonType="ButtonType.Submit" Click="@(()=>OnChange(2))" style="background-color: white;">Previous</RadzenButton>
+                            <RadzenButton class="rz-steps-next btn-light" ButtonType="ButtonType.Submit" style="background-color: white;">Next</RadzenButton>
+                        </div>
+                    </div>
+                </RadzenTemplateForm>
+            }
+
+            @if (IsShow == 4)
+            {
+                <RadzenTemplateForm Data="@staff" Submit="@(async(Staff args) => {await OnSubmit(args,0); })">
+                    <div class="rz-widget-content">
+                            @foreach (var d in staff.Dependants)
+                            {
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>Name of Dependant</label>
+                                <RadzenTextBox Name="Name" @bind-Value='d.Name' class="form-control" />
+                                <RadzenRequiredValidator Component="Name" Text="Name is required" />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Address</label>
+                                <RadzenTextBox Name="Address" @bind-Value='d.Address' class="form-control" />
+                                <RadzenRequiredValidator Component="Address" Text="Address is required" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Phone</label>
+                                <RadzenTextBox Name="Phone" @bind-Value='d.Phone' class="form-control" />
+                                <RadzenRequiredValidator Component="Phone" Text="Phone is required" />
+                            </div>
+                            <div class="form-group col-md-1">
+                                <label>Del</label>
+                                <RadzenButton ButtonStyle="ButtonStyle.Danger" class="btn btn-sm" Click=@(args => staff.RemoveDependant(d)) Icon="clear"></RadzenButton>
+                            </div>
+                            </div>
+                            }
+                            <RadzenButton class="col-md-3" ButtonStyle="ButtonStyle.Secondary" Click="(()=> staff.AddDependant())">Add Dependant</RadzenButton>
+                            <div class="rz-steps-buttons">
+                                <RadzenButton class="rz-steps-prev btn-light" ButtonType="ButtonType.Submit" Click="@(()=>OnChange(3))" style="background-color: white;">Previous</RadzenButton>
+                                <RadzenButton class="rz-steps-next btn-light" ButtonType="ButtonType.Submit" style="background-color: white;">Finish</RadzenButton>
+                            </div>
+                        </div>
+</RadzenTemplateForm>
+            }
+        </div>
     </ChildContent>
 </RadzenFieldset>
 
 @code {
+    [Parameter]
+    public string Id { get; set; } = string.Empty;
+    private int IsShow { get; set; } = 1;
+    private string personal = "rz-steps-current";
+    private string administrative = string.Empty;
+    private string spous = string.Empty;
+    private string dependant = string.Empty;
+    private EditContext editContext;
+    Staff staff = new Staff();
 
+    async Task OnSubmit(Staff staff, int id)
+    {
+        if (id == 0)
+        {
+            var uri = "https://localhost:44372/api/Staff/AddStaff";
+            if (!string.IsNullOrWhiteSpace(Id))
+            {
+                uri = "https://localhost:44372/api/Student/UpdateStudent";
+            }
 
+            var response = await Http.PostAsJsonAsync(uri, staff);
+            var content = await response.Content.ReadFromJsonAsync<Result>();
+            if (content.IsSucessful)
+            {
+                //toastService.ShowAlert(this, "alert-success", content.Message);
+                //toastService.CloseAlert(this);
+
+                navigation.NavigateTo("/staff");
+
+                //await InvokeAsync(StateHasChanged);
+
+            }
+            else
+            {
+                //toastService.ShowAlert(this, "alert-danger", content.Message);
+                //toastService.CloseAlert(this);
+            }
+        }
+        else
+        {
+
+        }
+        OnChange(id);
+    }
+
+    void OnChange(int id)
+    {
+        IsShow = id;
+        if (id == 1)
+        {
+            administrative = string.Empty;
+            spous = string.Empty;
+            dependant = string.Empty;
+        }
+        if (id == 2)
+        {
+            administrative = "rz-state-highlight rz-steps-current";
+            spous = string.Empty;
+            dependant = string.Empty;
+        }
+        if (id == 3)
+        {
+            administrative = "rz-state-highlight rz-steps-current";
+            spous = "rz-state-highlight rz-steps-current";
+            dependant = string.Empty;
+        }
+        if (id == 4)
+        {
+            administrative = "rz-state-highlight rz-steps-current";
+            spous = "rz-state-highlight rz-steps-current";
+            dependant = "rz-state-highlight rz-steps-current";
+        }
+        //if (editContext.Validate())
+        //{
+
+        //}
+        //else
+        //{
+        //    editContext.NotifyValidationStateChanged();
+        //}
+    }
+
+    protected override void OnInitialized()
+    {
+        editContext = new(staff);
+    }
 }

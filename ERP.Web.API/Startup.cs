@@ -40,7 +40,7 @@ namespace ERP.HRM.Web.API
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ERP.Web.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ERP.HMS.Web.API", Version = "v1" });
             });
         }
 
@@ -55,6 +55,13 @@ namespace ERP.HRM.Web.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(
+               builder =>
+               builder
+               .AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader());
 
             app.UseRouting();
 
