@@ -15,12 +15,17 @@
                             AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" LogicalFilterOperator="LogicalFilterOperator.Or"
                             AllowSorting="true">
                 <Columns>
+                    <RadzenDataGridColumn TItem="Staff" Title="Photo" Sortable="false" Filterable="false" Width="90px">
+                        <Template Context="data">
+                            <RadzenImage Path="@data.Photo" style="width: 40px; height: 40px; border-radius: 8px;" />
+                        </Template>
+                    </RadzenDataGridColumn>
                     <RadzenDataGridColumn TItem="Staff" Property="Surname" Title="Surname" />
                     <RadzenDataGridColumn TItem="Staff" Property="Othernames" Title="Othernames" />
                     <RadzenDataGridColumn TItem="Staff" Property="DateofBirth" Title="Date Of Birth" />
                     <RadzenDataGridColumn TItem="Staff" Property="Email" Title="Email" />
                     <RadzenDataGridColumn TItem="Staff" Property="Phone" Title="Phone" />
-                    <RadzenDataGridColumn TItem="Staff" Property="StaffId" Title="" Width="5">
+                    <RadzenDataGridColumn TItem="Staff" Title="" Sortable="false" Filterable="false">
                         <Template Context="data">
                             <RadzenButton ButtonStyle="ButtonStyle.Light" Click=@(args => navigation.NavigateTo($"/staff/new/{data.StaffId}"))>Edit</RadzenButton>
                         </Template>
