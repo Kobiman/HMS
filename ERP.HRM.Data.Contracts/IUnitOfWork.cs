@@ -11,6 +11,7 @@ namespace ERP.HRM.Data.Contracts
     {
         IStaffRepository Staffs { get; }
         IDependantRepository Dependants { get; }
+        ILeaveRepository Leaves { get; }
 
         int SaveChanges();
         Task<int> SaveChangesAsync();

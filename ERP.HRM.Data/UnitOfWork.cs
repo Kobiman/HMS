@@ -15,6 +15,8 @@ namespace ERP.HRM.Data
         public IStaffRepository Staffs => _staffs ??= new StaffRepository(_context);
         private IDependantRepository _dependants;
         public IDependantRepository Dependants => _dependants ??= new DependantRepository(_context);
+        public ILeaveRepository _leaves;
+        public ILeaveRepository Leaves => _leaves ??= new LeaveRepository(_context);
 
         private HMSDataContext _context { get; set; }
 

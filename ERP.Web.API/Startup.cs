@@ -36,7 +36,8 @@ namespace ERP.HRM.Web.API
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IStaffService, StaffService>();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>(); 
+            services.AddTransient<ILeaveService, LeaveService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

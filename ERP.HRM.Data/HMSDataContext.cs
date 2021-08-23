@@ -15,5 +15,6 @@ namespace ERP.HRM.Data
         }
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<Dependant> Dependants { get; set; }
+        public DbSet<Leave> Leaves { get; set; }
     }
 }
